@@ -1,8 +1,8 @@
 {
-  "name": "demo-nest-structure",
-  "version": "0.0.1",
+  "name": "nest-js-structuring",
+  "version": "1.0.0",
   "description": "",
-  "author": "",
+  "author": "Anuj Gupta",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
