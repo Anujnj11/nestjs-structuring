@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Get,
   HttpCode,
@@ -30,8 +31,18 @@ export class CustomerController {
   }
 
   @Post()
-  @HttpCode(HttpStatus.ACCEPTED)
-  async createCustomer(): Promise<any> {
-    await this.customerService.createCustomer();
+  @Version('1')
+  @SwaggerDecorator()
+  @ApiOperation({
+    summary: 'Create New Customer',
+  })
+  @ApiOkResponse({
+    description: 'Success',
+    type: CUSTOMER_DTO.CustomerRegisterReq,
+  })
+  async createCustomer(
+    @Body() customerReq: CUSTOMER_DTO.CustomerRegisterReq,
+  ): Promise<any> {
+    await this.customerService.createCustomer(customerReq);
   }
 }

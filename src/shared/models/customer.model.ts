@@ -12,6 +12,12 @@ export class Address {
 
 @Schema({ timestamps: true })
 export class Customer extends Document {
+  @Prop({ required: true, trim: true, index: true, unique: true })
+  emailId: string;
+
+  @Prop({ required: true, select: false })
+  password: string;
+
   @Prop({ required: true, trim: true })
   firstName: string;
 
@@ -21,8 +27,8 @@ export class Customer extends Document {
   @Prop({ required: false, default: [] })
   address: Address[];
 
-  @Prop({ type: Boolean, default: true })
+  @Prop({ type: Boolean, default: true, select: false })
   isActive: boolean;
 }
 
-export const CustomerSchema = SchemaFactory.createForClass(Customer);
+export let CustomerSchema = SchemaFactory.createForClass(Customer);

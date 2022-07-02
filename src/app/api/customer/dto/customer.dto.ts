@@ -3,6 +3,7 @@ import {
   ArrayNotEmpty,
   IsArray,
   IsBoolean,
+  IsEmail,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -15,53 +16,47 @@ import { Transform, Type } from 'class-transformer';
 
 import { Types } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
+export namespace CUSTOMER_DTO {
+  export class CustomerDTO {
+    @ApiProperty()
+    _id: string;
 
-// class LiveSaleDTO {
-//   @IsString()
-//   @IsNotEmpty()
-//   readonly channelId: string;
+    @ApiProperty()
+    firstName: string;
 
-//   @IsOptional()
-//   @Transform(mongoIdTransform)
-//   readonly productListId: Types.ObjectId;
+    @ApiProperty()
+    lastName: string;
 
-//   @IsNumber()
-//   @IsNotEmpty()
-//   readonly expireCartInMins: number;
+    @ApiProperty({ isArray: true, example: [] })
+    address?: any[];
 
-//   @IsOptional()
-//   specialCartExpiration: string;
+    @ApiProperty()
+    isActive: boolean;
+  }
 
-//   @IsString()
-//   @IsNotEmpty()
-//   title: string;
+  export class CustomerInfoRes {
+    @ApiProperty({ type: CustomerDTO })
+    data: CustomerDTO;
+  }
 
-//   @ApiProperty({ type: ['string'] })
-//   airTalents: Types.ObjectId[];
-// }
+  export class CustomerRegisterReq {
+    @ApiProperty({ required: true, example: 'Anuj', type: String })
+    @IsString()
+    @MinLength(3)
+    firstName: string;
 
-export class CustomerDTO {
-  @ApiProperty()
-  _id: string;
+    @IsString()
+    @ApiProperty({ example: 'Gupta', type: String })
+    lastName?: string;
 
-  @ApiProperty()
-  firstName: string;
+    @ApiProperty({ required: true, example: 'anuj@heady.io', type: String })
+    @IsEmail()
+    @IsString()
+    emailId: string;
 
-  @ApiProperty()
-  lastName: string;
-
-  @ApiProperty({ isArray: true, example: [] })
-  address?: any[];
-
-  @ApiProperty()
-  isActive: boolean;
+    @ApiProperty({ required: true, example: '********', type: String })
+    @IsString()
+    @MinLength(5)
+    password: string;
+  }
 }
-
-class CustomerInfoRes {
-  @ApiProperty({ type: CustomerDTO })
-  data: CustomerDTO;
-}
-
-export const CUSTOMER_DTO = {
-  CustomerInfoRes,
-};

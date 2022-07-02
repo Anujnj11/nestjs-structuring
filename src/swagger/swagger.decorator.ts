@@ -8,6 +8,7 @@ import {
 // import { BearerAuthentications } from '../constants';
 // import { messageCompose } from './errMsg';
 // authType = BearerAuthentications.Member
+
 export function SwaggerDecorator(): any {
   return applyDecorators(
     ApiBadRequestResponse(),

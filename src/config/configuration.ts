@@ -4,6 +4,7 @@ export default (): any => ({
   port: parseInt(process.env.PORT),
   database: process.env.DATABASE_URL,
   logEnabled: process.env.LOG === 'true',
+  salt: parseInt(process.env.SALT),
   loggly: {
     enabled: process.env.LOG === 'true',
     logLevel: ['warn', 'error', 'info'],
