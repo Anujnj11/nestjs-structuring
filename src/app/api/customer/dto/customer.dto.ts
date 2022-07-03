@@ -59,4 +59,16 @@ export namespace CUSTOMER_DTO {
     @MinLength(5)
     password: string;
   }
+
+  export class CustomerLoginReq {
+    @ApiProperty({ required: true, example: 'anuj@heady.io', type: String })
+    @IsEmail()
+    @IsString()
+    emailId: string;
+
+    @ApiProperty({ required: true, example: '********', type: String })
+    @IsString()
+    @MinLength(5)
+    password: string;
+  }
 }

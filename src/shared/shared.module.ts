@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SchemaModels } from './schema.models';
+import { JwtModule } from '@nestjs/jwt';
 
 //START SERVICES
 import { CustomerService } from './services/customer/customer.service';
@@ -11,7 +12,7 @@ const SERVICES = [CustomerService, OrderService, HelperService];
 //END SERVICES
 
 @Module({
-  imports: [SchemaModels],
+  imports: [SchemaModels, JwtModule],
   providers: [...SERVICES],
   exports: [...SERVICES],
 })

@@ -8,6 +8,9 @@ export const ERROR_MESSAGES = {
   FORBIDDEN: 'Forbidden resource',
   EXTERNAL_SERVICE_ERROR: 'External service error',
   INVALID_MONGO_ID: 'Invalid Mongo Id',
+  CUSTOMER:{
+    NO_USER_FOUND: { MSG: 'Invalid Email Id or Password', CODE: 'C1' }
+  },
   ORDER: {
     INVALID_ORDER_ID: { MSG: 'Invalid Order Id', CODE: 'O12121' },
   },
